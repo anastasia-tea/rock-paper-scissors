@@ -74,7 +74,8 @@
 
         function playRound(playerSelection, computerSelection) {
 
-            let result = "";
+            //testing
+            let result = "hmm";
 
             let tie = "Tie! You both chose " + playerSelection;
             let win = "You win! " + playerSelection + " beats " + computerSelection;
@@ -102,7 +103,7 @@
                     result = win;
                 } else if (computerSelection === "Paper") {
                     result = tie;
-                } else if (playerSelection === "Scissors") {
+                } else {
                     playerLose++;
                     compWin++;
                     result = lose;
