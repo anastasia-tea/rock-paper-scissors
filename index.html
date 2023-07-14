@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rock-Paper-Scissors</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        //referencing https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+        function getRandomNumber(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function getComputerChoice() {
+            let numberChoice = getRandomNumber(3);
+            let choice;
+
+            if (numberChoice === 1) {
+                choice = "Rock";
+            } else if (numberChoice === 2) {
+                choice = "Paper";
+            } else {
+                choice = "Scissors";
+            }
+        }
+
+        function getPlayerChoice() {
+
+        }
+
+        function playRound(playerSelection, computerSelection) {
+
+        }
+
+        console.log(playRound(playerSelection, computerSelection));
+
+        function game() {
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
