@@ -15,24 +15,43 @@
 
         //referencing https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
+        let win = 0;
+        let lose = 0;
+        let compwin = 0;
+        let complose = 0;
+
         function getRandomNumber(max) {
             return Math.floor(Math.random() * max);
         }
 
         function getComputerChoice() {
             let numberChoice = getRandomNumber(3);
-            let choice;
+            let choice = "";
 
             if (numberChoice === 1) {
                 choice = "Rock";
             } else if (numberChoice === 2) {
                 choice = "Paper";
-            } else {
+            } else if (numberChoice === 3) {
                 choice = "Scissors";
             }
+
+            return choice;
         }
 
         function getPlayerChoice() {
+
+            let player = prompt("Rock, Paper, or Scissors?").toLowerCase();
+
+            if (player === "rock") {
+
+            } else if (player === "paper") {
+
+            } else if (player === "scissors") {
+
+            } else {
+                
+            }
 
         }
 
@@ -41,45 +60,91 @@
             if (playerSelection === "Rock") {
 
                 if (computerSelection === "Rock") {
-                    return
+                    return "Tie! You both chose " + playerSelection;
                 } else if (computerSelection === "Paper") {
-                    return
+                    lose++;
+                    compwin++;
+                    return "You lose! " + computerSelection + " beats " + playerSelection;
                 } else if (playerSelection === "Scissors") {
-                    return
+                    win++;
+                    complose++;
+                    return "You win! " + playerSelection + " beats " + computerSelection;
                 }
 
             } else if (playerSelection === "Paper") {
 
                 if (computerSelection === "Rock") {
-                    return
+                    win++;
+                    complose++;
+                    return "You win! " + playerSelection + " beats " + computerSelection;
                 } else if (computerSelection === "Paper") {
-                    return
+                    return "Tie! You both chose " + playerSelection;
                 } else if (playerSelection === "Scissors") {
-                    return
+                    lose++;
+                    compwin++;
+                    return "You lose! " + computerSelection + " beats " + playerSelection;
                 }
 
             } else if (playerSelection === "Scissors") {
 
                 if (computerSelection === "Rock") {
-                    return
+                    lose++;
+                    compwin++;
+                    return "You lose! " + computerSelection + " beats " + playerSelection;
                 } else if (computerSelection === "Paper") {
-                    return
+                    win++;
+                    complose++;
+                    return "You win! " + playerSelection + " beats " + computerSelection;
                 } else if (playerSelection === "Scissors") {
-                    return
+                    return "Tie! You both chose " + playerSelection;
                 }
 
             }
 
         }
 
-        const playerSelection = "Rock";
+        /*
+        const playerSelection = "Scissors";
         const computerSelection = getComputerChoice();
 
         console.log(playRound(playerSelection, computerSelection));
+        */
 
         function game() {
 
+            const playerSelection = "Scissors";
+            //const computerSelection = getComputerChoice();
+
+            /*
+            let win = 0;
+            let lose = 0;
+            let compwin = 0;
+            let complose = 0;
+            */
+
+           for (let i = 0; i < 5; i ++) {
+
+            console.log(playRound(playerSelection, computerSelection));
+
+            console.log(playRound(playerSelection, computerSelection));
+
+            console.log(playRound(playerSelection, computerSelection));
+
+            console.log(playRound(playerSelection, computerSelection));
+
+            console.log(playRound(playerSelection, computerSelection));
+
+           }
+
+            if (win > compwin) {
+                console.log("Congratulations - you won the game!")
+            } else {
+                console.log("The computer won the game - better luck next time!")
+            }
+
         }
+
+        game();
 
     </script>
 
