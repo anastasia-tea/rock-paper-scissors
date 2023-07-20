@@ -32,6 +32,7 @@
 
 .label {
     text-align: center;
+    color: rgb(28, 94, 235);
 }
 
 .btns {
@@ -44,7 +45,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-
+    color: rgb(28, 94, 235);
 }
 
 #score,
@@ -56,6 +57,11 @@
 
 h1 {
     font-size: 36px;
+    background-color: rgb(28, 94, 235);
+    margin: 5px 500px;
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
 }
 
 h3 {
