@@ -55,12 +55,12 @@ function getPlayerChoice(player) {
 
     let choice = "";
     
-    if (player === "rock") {
+    if (player === "Rock") {
 
         choice = "Rock";
         pRock.style.background = "blue";
 
-    } else if (player === "paper") {
+    } else if (player === "Paper") {
 
         choice = "Paper";
         pPaper.style.background = "blue";
@@ -160,43 +160,13 @@ function playGame(player) {
     
 }
 
-playGame();
-
 /*
 Referenced
 https://stackoverflow.com/questions/49680484/how-to-add-one-event-listener-for-all-buttons
 */
 buttons.forEach(button => {
     button.addEventListener('click', e => {
-        getPlayerChoice(button.name);
+        playGame(button.name);
     });
 });
 
-/*
-function game() {
-    
-    for (let i = 0; i < 3; i++) {
-
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-    
-        playRound(playerSelection, computerSelection);
-
-    }
-
-    const winner = document.createElement("p");
-    winner.classList.add("winner");
-
-    if (playerWin > compWin) {
-        winner.textContent = "Congratulations - you won the game!";
-    } else if (compWin > playerWin) {
-        winner.textContent = "The computer won the game - better luck next time!";
-    } else {
-        winner.textContent = "Wow - you and the computer have tied!";
-    }
-
-    info.appendChild(winner);
-
-}
-
-game();*/
