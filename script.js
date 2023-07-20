@@ -15,7 +15,6 @@ const pPaper = document.querySelector("#pPaper");
 const pScissors = document.querySelector("#pScissors");
 
 const scoreboard = document.querySelector("#score");
-//const results = document.querySelector("#results");
 const info = document.querySelector("#info");
 
 const buttons = document.querySelectorAll(".buttons");
@@ -76,7 +75,35 @@ function getPlayerChoice(player) {
 
 }
 
-function playGame(player) {
+function colorReset() {
+    buttons.style.background = "";
+}
+
+function showScore() {
+    const score = document.querySelector("p");
+    score.classList.add("score");
+
+    score.textContent = `${playerWin} - ${compWin}`;
+
+    scoreboard.appendChild(score);
+}
+
+function declareWinner() {
+    const winner = document.createElement("p");
+    winner.classList.add("winner");
+
+    if (playerWin > compWin) {
+        winner.textContent = "Congratulations - you won the game!";
+    } else if (compWin > playerWin) {
+        winner.textContent = "The computer won the game - better luck next time!";
+    } else {
+        winner.textContent = "Wow - you and the computer have tied!";
+    }
+
+    info.appendChild(winner);
+}
+
+function playRound(player) {
 
     let playerSelection = getPlayerChoice(player);
     let computerSelection = getComputerChoice();
@@ -89,6 +116,9 @@ function playGame(player) {
 
     const lose = document.createElement("p");
     lose.classList.add("lose");
+
+    const score = document.createElement("p");
+    score.classList.add("score");
 
     if (playerSelection === "Rock") {
 
@@ -145,18 +175,13 @@ function playGame(player) {
 
     }
 
-    const winner = document.createElement("p");
-    winner.classList.add("winner");
+    showScore();
 
-    if (playerWin > compWin) {
-        winner.textContent = "Congratulations - you won the game!";
-    } else if (compWin > playerWin) {
-        winner.textContent = "The computer won the game - better luck next time!";
-    } else {
-        winner.textContent = "Wow - you and the computer have tied!";
+    colorReset();
+
+    if (playerWin === 5 || compWin === 5) {
+        declareWinner();
     }
-
-    info.appendChild(winner);
     
 }
 
@@ -166,7 +191,7 @@ https://stackoverflow.com/questions/49680484/how-to-add-one-event-listener-for-a
 */
 buttons.forEach(button => {
     button.addEventListener('click', e => {
-        playGame(button.name);
+        playRound(button.name);
     });
 });
 
