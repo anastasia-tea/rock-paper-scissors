@@ -14,6 +14,10 @@ const pRock = document.querySelector("#pRock");
 const pPaper = document.querySelector("#pPaper");
 const pScissors = document.querySelector("#pScissors");
 
+const scoreboard = document.querySelector("#score");
+//const results = document.querySelector("#results");
+const info = document.querySelector("#info");
+
 //Referenced https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomNumber() {
     return Math.floor(Math.random() * 3);
@@ -40,6 +44,7 @@ function getComputerChoice() {
     return choice;
 }
 
+
 /*
 Referenced
 https://www.w3schools.com/jsref/met_win_prompt.asp
@@ -47,7 +52,18 @@ https://www.shecodes.io/athena/3183-how-to-make-a-prompt-input-in-javascript-cas
 */
 function getPlayerChoice() {
 
-    let player = prompt(("Rock, Paper, or Scissors?").toLowerCase());
+    //let player = "prompt(("Rock, Paper, or Scissors?").toLowerCase());"
+    let player = "paper";
+
+    /*pRock.addEventListener('click', () => { 
+        player = "rock";
+    });
+    pPaper.addEventListener('click', () => { 
+        player = "paper";
+    });
+    pScissors.addEventListener('click', () => { 
+        player = "scissors";
+    });*/
 
     let choice = "";
 
@@ -131,12 +147,26 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-function game() {
+function showScore(playerWin, compWin) {
 
+    const scores = document.createElement("p");
+    scores.classList.add("scores");
+    scores.textContent = `${playerWin} + " - " + ${compWin}`;
+
+    scoreboard.appendChild(scores);
+
+    board.appendChild(scores);
+
+}
+
+function game() {
+    
     let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
 
-    /*for (let i = 0; i < 5; i++) {
+    playRound(playerSelection, computerSelection);
+
+    /*for (let i = 0; i < 2; i++) {
 
         let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
@@ -145,13 +175,18 @@ function game() {
 
     }*/
 
+    const winner = document.createElement("p");
+    winner.classList.add("winner");
+
     if (playerWin > compWin) {
-        console.log("Congratulations - you won the game!")
+        winner.textContent = "Congratulations - you won the game!";
     } else if (compWin > playerWin) {
-        console.log("The computer won the game - better luck next time!")
+        winner.textContent = "The computer won the game - better luck next time!";
     } else {
-        console.log("Wow - you and the computer have tied!");
+        winner.textContent = "Wow - you and the computer have tied!";
     }
+
+    info.appendChild(winner);
 
 }
 
