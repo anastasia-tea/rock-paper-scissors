@@ -22,12 +22,12 @@
     gap: 20px;
 }
 
-#playerboard {
-
+#playerboard .buttons {
+    background-color: purple;
 }
 
-#computerboard {
-
+#computerboard .comps {
+    background-color: rgb(211, 120, 135);
 }
 
 .label {
@@ -36,21 +36,36 @@
 
 .btns {
     display: flex;
+    gap: 10px;
 }
 
 #results {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     gap: 20px;
 
 }
 
-#score {
-
+#score,
+#info {
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-#info {
+h1 {
+    font-size: 36px;
+}
 
+h3 {
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+}
+
+label {
+    font-weight: bold;
 }
 
 button {
@@ -58,9 +73,11 @@ button {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    color: white;
+    font-weight: bold;
 }
 
 img {
-    width: 300px;
+    width: 225px;
     height: auto;
 }
