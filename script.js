@@ -4,6 +4,16 @@ let playerLose = 0;
 let compWin = 0;
 let compLose = 0;
 
+const board = document.getElementById("#board");
+
+const cRock = document.getElementById("#cRock");
+const cPaper = document.getElementById("#cPaper");
+const cScissors = document.getElementById("#cScissors");
+
+const pRock = document.getElementById("#pRock");
+const pPaper = document.getElementById("#pPaper");
+const pScissors = document.getElementById("#pScissors");
+
 //Referenced https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomNumber() {
     return Math.floor(Math.random() * 3);
@@ -15,6 +25,7 @@ function getComputerChoice() {
 
     if (numberChoice === 0) {
         choice = "Rock";
+        
     } else if (numberChoice === 1) {
         choice = "Paper";
     } else if (numberChoice === 2) {
@@ -33,7 +44,7 @@ https://www.shecodes.io/athena/3183-how-to-make-a-prompt-input-in-javascript-cas
 */
 function getPlayerChoice() {
 
-    let player = "";
+    let player = "rock";
 
     let choice = "";
 
