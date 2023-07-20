@@ -4,15 +4,15 @@ let playerLose = 0;
 let compWin = 0;
 let compLose = 0;
 
-const board = document.getElementById("#board");
+const board = document.querySelector("#board");
 
-const cRock = document.getElementById("#cRock");
-const cPaper = document.getElementById("#cPaper");
-const cScissors = document.getElementById("#cScissors");
+const cRock = document.querySelector("#cRock");
+const cPaper = document.querySelector("#cPaper");
+const cScissors = document.querySelector("#cScissors");
 
-const pRock = document.getElementById("#pRock");
-const pPaper = document.getElementById("#pPaper");
-const pScissors = document.getElementById("#pScissors");
+const pRock = document.querySelector("#pRock");
+const pPaper = document.querySelector("#pPaper");
+const pScissors = document.querySelector("#pScissors");
 
 //Referenced https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomNumber() {
@@ -25,13 +25,16 @@ function getComputerChoice() {
 
     if (numberChoice === 0) {
         choice = "Rock";
-        
+        cRock.style.background = "blue";
     } else if (numberChoice === 1) {
         choice = "Paper";
+        cPaper.style.background = "blue";
     } else if (numberChoice === 2) {
         choice = "Scissors";
+        cScissors.style.background = "blue";
     } else {
         choice = "Rock";
+        cRock.style.background = "blue";
     }
 
     return choice;
@@ -44,25 +47,29 @@ https://www.shecodes.io/athena/3183-how-to-make-a-prompt-input-in-javascript-cas
 */
 function getPlayerChoice() {
 
-    let player = "rock";
+    let player = prompt(("Rock, Paper, or Scissors?").toLowerCase());
 
     let choice = "";
 
     if (player === "rock") {
 
         choice = "Rock";
+        pRock.style.background = "blue";
 
     } else if (player === "paper") {
 
         choice = "Paper";
+        pPaper.style.background = "blue";
 
     } else if (player === "scissors") {
 
         choice = "Scissors";
+        pScissors.style.background = "blue";
 
     } else {
 
         choice = "Rock";
+        pRock.style.background = "blue";
 
     }
 
@@ -125,6 +132,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
+
+    let playerSelection = getPlayerChoice();
+    let computerSelection = getComputerChoice();
 
     /*for (let i = 0; i < 5; i++) {
 
