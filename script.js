@@ -15,7 +15,6 @@ const pPaper = document.querySelector("#pPaper");
 const pScissors = document.querySelector("#pScissors");
 
 const scoreboard = document.querySelector("#score");
-//const results = document.querySelector("#results");
 const info = document.querySelector("#info");
 
 //Referenced https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -44,6 +43,24 @@ function getComputerChoice() {
     return choice;
 }
 
+function buttonClick() {
+
+    let player = "";
+
+    pRock.addEventListener('click', () => { 
+        player = "rock";
+    });
+    pPaper.addEventListener('click', () => { 
+        player = "paper";
+    });
+    pScissors.addEventListener('click', () => { 
+        player = "scissors";
+    });
+
+    return player;
+
+}
+
 
 /*
 Referenced
@@ -52,21 +69,26 @@ https://www.shecodes.io/athena/3183-how-to-make-a-prompt-input-in-javascript-cas
 */
 function getPlayerChoice() {
 
-    //let player = "prompt(("Rock, Paper, or Scissors?").toLowerCase());"
-    let player = "paper";
+    //let player = buttonClick();
 
-    /*pRock.addEventListener('click', () => { 
-        player = "rock";
+    let player = "";
+
+    //let choice = "";
+
+    pRock.addEventListener('click', () => { 
+        let choice = "rock";
+        return choice;
     });
     pPaper.addEventListener('click', () => { 
-        player = "paper";
+        let choice = "paper";
+        return choice;
     });
     pScissors.addEventListener('click', () => { 
-        player = "scissors";
-    });*/
+        let choice = "scissors";
+        return choice;
+    });
 
-    let choice = "";
-
+    /*
     if (player === "rock") {
 
         choice = "Rock";
@@ -87,13 +109,26 @@ function getPlayerChoice() {
         choice = "Rock";
         pRock.style.background = "blue";
 
-    }
+    }*/
 
-    return choice;
+    //return choice;
 
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(computerSelection) {
+
+    pRock.addEventListener('click', () => { 
+        let playerSelection = "Rock";
+        return playerSelection;
+    });
+    pPaper.addEventListener('click', () => { 
+        let playerSelection = "Paper";
+        return playerSelection;
+    });
+    pScissors.addEventListener('click', () => { 
+        let playerSelection = "Scissors";
+        return playerSelection;
+    });
 
     let tie = "Tie! You both chose " + playerSelection;
     let win = "You win! " + playerSelection + " beats " + computerSelection;
