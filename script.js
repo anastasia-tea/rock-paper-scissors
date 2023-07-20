@@ -33,7 +33,7 @@ https://www.shecodes.io/athena/3183-how-to-make-a-prompt-input-in-javascript-cas
 */
 function getPlayerChoice() {
 
-    let player = prompt(("Rock, Paper, or Scissors?").toLowerCase());
+    let player = "";
 
     let choice = "";
 
@@ -60,9 +60,6 @@ function getPlayerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-
-    //testing
-    let result = "hmm";
 
     let tie = "Tie! You both chose " + playerSelection;
     let win = "You win! " + playerSelection + " beats " + computerSelection;
@@ -118,14 +115,14 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
 
-    for (let i = 0; i < 5; i++) {
+    /*for (let i = 0; i < 5; i++) {
 
         let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
     
         console.log(playRound(playerSelection, computerSelection));
 
-    }
+    }*/
 
     if (playerWin > compWin) {
         console.log("Congratulations - you won the game!")
