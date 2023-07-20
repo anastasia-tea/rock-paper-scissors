@@ -15,7 +15,10 @@ const pPaper = document.querySelector("#pPaper");
 const pScissors = document.querySelector("#pScissors");
 
 const scoreboard = document.querySelector("#score");
+//const results = document.querySelector("#results");
 const info = document.querySelector("#info");
+
+const buttons = document.querySelectorAll(".buttons");
 
 //Referenced https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomNumber() {
@@ -43,52 +46,15 @@ function getComputerChoice() {
     return choice;
 }
 
-function buttonClick() {
-
-    let player = "";
-
-    pRock.addEventListener('click', () => { 
-        player = "rock";
-    });
-    pPaper.addEventListener('click', () => { 
-        player = "paper";
-    });
-    pScissors.addEventListener('click', () => { 
-        player = "scissors";
-    });
-
-    return player;
-
-}
-
-
 /*
 Referenced
 https://www.w3schools.com/jsref/met_win_prompt.asp
 https://www.shecodes.io/athena/3183-how-to-make-a-prompt-input-in-javascript-case-insensitive#:~:text=let%20input%20%3D%20prompt(%22Enter,in%20uppercase%20or%20lowercase%20characters.
 */
-function getPlayerChoice() {
+function getPlayerChoice(player) {
 
-    //let player = buttonClick();
-
-    let player = "";
-
-    //let choice = "";
-
-    pRock.addEventListener('click', () => { 
-        let choice = "rock";
-        return choice;
-    });
-    pPaper.addEventListener('click', () => { 
-        let choice = "paper";
-        return choice;
-    });
-    pScissors.addEventListener('click', () => { 
-        let choice = "scissors";
-        return choice;
-    });
-
-    /*
+    let choice = "";
+    
     if (player === "rock") {
 
         choice = "Rock";
@@ -99,53 +65,48 @@ function getPlayerChoice() {
         choice = "Paper";
         pPaper.style.background = "blue";
 
-    } else if (player === "scissors") {
+    } else {
 
         choice = "Scissors";
         pScissors.style.background = "blue";
 
-    } else {
+    }
 
-        choice = "Rock";
-        pRock.style.background = "blue";
-
-    }*/
-
-    //return choice;
+    return choice;
 
 }
 
-function playRound(computerSelection) {
+function playGame(player) {
 
-    pRock.addEventListener('click', () => { 
-        let playerSelection = "Rock";
-        return playerSelection;
-    });
-    pPaper.addEventListener('click', () => { 
-        let playerSelection = "Paper";
-        return playerSelection;
-    });
-    pScissors.addEventListener('click', () => { 
-        let playerSelection = "Scissors";
-        return playerSelection;
-    });
+    let playerSelection = getPlayerChoice(player);
+    let computerSelection = getComputerChoice();
 
-    let tie = "Tie! You both chose " + playerSelection;
-    let win = "You win! " + playerSelection + " beats " + computerSelection;
-    let lose = "You lose! " + computerSelection + " beats " + playerSelection;
+    const tie = document.createElement("p");
+    tie.classList.add("tie");
+
+    const win = document.createElement("p");
+    win.classList.add("win");
+
+    const lose = document.createElement("p");
+    lose.classList.add("lose");
 
     if (playerSelection === "Rock") {
 
         if (computerSelection === "Rock") {
-            result = tie;
+            tie.textContent = `Tie! You both chose ${playerSelection}`;
+            info.appendChild(tie);
+
         } else if (computerSelection === "Paper") {
             playerLose++;
             compWin++;
-            result = lose;
+            lose.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+            info.appendChild(lose);
+
         } else {
             playerWin++;
             compLose++;
-            result = win;
+            win.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+            info.appendChild(win);
         }
 
     } else if (playerSelection === "Paper") {
@@ -153,13 +114,16 @@ function playRound(computerSelection) {
         if (computerSelection === "Rock") {
             playerWin++;
             compLose++;
-            result = win;
+            win.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+            info.appendChild(win);
         } else if (computerSelection === "Paper") {
-            result = tie;
+            tie.textContent = `Tie! You both chose ${playerSelection}`;
+            info.appendChild(tie);
         } else {
             playerLose++;
             compWin++;
-            result = lose;
+            lose.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+            info.appendChild(lose);
         }
 
     } else {
@@ -167,48 +131,58 @@ function playRound(computerSelection) {
         if (computerSelection === "Rock") {
             playerLose++;
             compWin++;
-            result = lose;
+            lose.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+            info.appendChild(lose);
         } else if (computerSelection === "Paper") {
             playerWin++;
             compLose++;
-            result = win;
+            win.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+            info.appendChild(win);
         } else {
-            result = tie;
+            tie.textContent = `Tie! You both chose ${playerSelection}`;
+            info.appendChild(tie);
         }
 
     }
 
-    return result;
+    const winner = document.createElement("p");
+    winner.classList.add("winner");
 
+    if (playerWin > compWin) {
+        winner.textContent = "Congratulations - you won the game!";
+    } else if (compWin > playerWin) {
+        winner.textContent = "The computer won the game - better luck next time!";
+    } else {
+        winner.textContent = "Wow - you and the computer have tied!";
+    }
+
+    info.appendChild(winner);
+    
 }
 
-function showScore(playerWin, compWin) {
+playGame();
 
-    const scores = document.createElement("p");
-    scores.classList.add("scores");
-    scores.textContent = `${playerWin} + " - " + ${compWin}`;
+/*
+Referenced
+https://stackoverflow.com/questions/49680484/how-to-add-one-event-listener-for-all-buttons
+*/
+buttons.forEach(button => {
+    button.addEventListener('click', e => {
+        getPlayerChoice(button.name);
+    });
+});
 
-    scoreboard.appendChild(scores);
-
-    board.appendChild(scores);
-
-}
-
+/*
 function game() {
     
-    let playerSelection = getPlayerChoice();
-    let computerSelection = getComputerChoice();
-
-    playRound(playerSelection, computerSelection);
-
-    /*for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 3; i++) {
 
         let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
     
-        console.log(playRound(playerSelection, computerSelection));
+        playRound(playerSelection, computerSelection);
 
-    }*/
+    }
 
     const winner = document.createElement("p");
     winner.classList.add("winner");
@@ -225,4 +199,4 @@ function game() {
 
 }
 
-game();
+game();*/
