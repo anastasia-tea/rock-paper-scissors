@@ -1,1 +1,41 @@
 
+.body {
+    font-family: "Fantasy", "Times New Roman", serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#boards {
+    display: flex;
+    justify-content: space-around;
+}
+
+#playerboard {
+
+}
+
+#computerboard {
+
+}
+
+#results {
+
+}
+
+#score {
+
+}
+
+#info {
+
+}

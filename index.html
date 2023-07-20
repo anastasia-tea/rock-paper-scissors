@@ -7,47 +7,59 @@
     <meta charset="UTF-8">
     <title>Rock-Paper-Scissors</title>
 
+    <link rel="stylesheet" href="style.css"> 
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <h1>Rock-Paper-Scissors</h1>
-
     <div id="board">
 
-        <div id="playerboard">
+        <h1>Rock-Paper-Scissors</h1>
 
-            <label for="playerboard">Player</label>
-            <button id="pRock" class="buttons" name="Rock">Rock</button>
-            <button id="pPaper" class="buttons" name="Paper">Paper</button>
-            <button id="pScissors" class="buttons" name="Scissors">Scissors</button>
+        <div id="boards">
+
+            <div id="playerboard">
+
+                <div>
+                    <label for="playerboard">Player</label>
+                </div>
+                <div>
+                    <button id="pRock" class="buttons" name="Rock">Rock</button>
+                    <button id="pPaper" class="buttons" name="Paper">Paper</button>
+                    <button id="pScissors" class="buttons" name="Scissors">Scissors</button>
+                </div>
+    
+            </div>
+    
+            <div id="computerboard">
+                <div>
+                    <label for="computerboard">Computer</label>
+                </div>
+                <div>
+                    <button id="cRock">Rock</button>
+                    <button id="cPaper">Paper</button>
+                    <button id="cScissors">Scissors</button>
+                </div>
+    
+            </div>
 
         </div>
 
-        <div id="computerboard">
+        <div id="results">
 
-            <label for="computerboard">Computer</label>
-            <button id="cRock">Rock</button>
-            <button id="cPaper">Paper</button>
-            <button id="cScissors">Scissors</button>
-
-        </div>
-
-    </div>
-
-    <div id="results">
-
-        <div id="score">
-
-            <h3>Score</h3>
-
-        </div>
-
-        <div id="info">
-
-            <h3>?</h3>
-
+            <div id="score">
+    
+                <h3>Score</h3>
+    
+            </div>
+    
+            <div id="info">
+    
+                <h3>?</h3>
+    
+            </div>
+    
         </div>
 
     </div>

@@ -30,16 +30,12 @@ function getComputerChoice() {
 
     if (numberChoice === 0) {
         choice = "Rock";
-        cRock.style.background = "blue";
     } else if (numberChoice === 1) {
         choice = "Paper";
-        cPaper.style.background = "blue";
     } else if (numberChoice === 2) {
         choice = "Scissors";
-        cScissors.style.background = "blue";
     } else {
         choice = "Rock";
-        cRock.style.background = "blue";
     }
 
     return choice;
@@ -57,26 +53,19 @@ function getPlayerChoice(player) {
     if (player === "Rock") {
 
         choice = "Rock";
-        pRock.style.background = "blue";
 
     } else if (player === "Paper") {
 
         choice = "Paper";
-        pPaper.style.background = "blue";
 
     } else {
 
         choice = "Scissors";
-        pScissors.style.background = "blue";
 
     }
 
     return choice;
 
-}
-
-function colorReset() {
-    buttons.style.background = "";
 }
 
 function showScore() {
@@ -103,7 +92,7 @@ function declareWinner() {
     info.appendChild(winner);
 }
 
-function playRound(player) {
+function playGame(player) {
 
     let playerSelection = getPlayerChoice(player);
     let computerSelection = getComputerChoice();
@@ -177,8 +166,6 @@ function playRound(player) {
 
     showScore();
 
-    colorReset();
-
     if (playerWin === 5 || compWin === 5) {
         declareWinner();
     }
@@ -191,7 +178,7 @@ https://stackoverflow.com/questions/49680484/how-to-add-one-event-listener-for-a
 */
 buttons.forEach(button => {
     button.addEventListener('click', e => {
-        playRound(button.name);
+        playGame(button.name);
     });
 });
 
