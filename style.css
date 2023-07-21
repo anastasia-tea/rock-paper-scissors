@@ -23,16 +23,16 @@
 }
 
 #playerboard .buttons {
-    background-color: purple;
+    background-color: rgb(221, 132, 221);
 }
 
 #computerboard .comps {
-    background-color: rgb(211, 120, 135);
+    background-color: rgb(140, 195, 240);
 }
 
 .label {
     text-align: center;
-    color: rgb(28, 94, 235);
+    color: rgb(172, 4, 121);
 }
 
 .btns {
@@ -45,7 +45,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-    color: rgb(28, 94, 235);
+    color: rgb(172, 4, 121);
 }
 
 #score,
@@ -57,7 +57,7 @@
 
 h1 {
     font-size: 36px;
-    background-color: rgb(28, 94, 235);
+    background-color: rgb(172, 4, 121);
     margin: 5px 500px;
     padding: 10px 20px;
     color: white;

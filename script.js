@@ -19,6 +19,8 @@ const info = document.querySelector("#info");
 
 const buttons = document.querySelectorAll(".buttons");
 
+const round = document.querySelector("#round");
+
 //Referenced https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomNumber() {
     return Math.floor(Math.random() * 3);
@@ -80,6 +82,7 @@ function showScore() {
 function declareWinner() {
     const winner = document.createElement("p");
     winner.classList.add("winner");
+    winner.style = "font-weight: bold";
 
     if (playerWin > compWin) {
         winner.textContent = "Congratulations - you won the game!";
@@ -92,7 +95,7 @@ function declareWinner() {
     info.appendChild(winner);
 }
 
-function playGame(player) {
+function playRound(player) {
 
     let playerSelection = getPlayerChoice(player);
     let computerSelection = getComputerChoice();
@@ -113,19 +116,19 @@ function playGame(player) {
 
         if (computerSelection === "Rock") {
             tie.textContent = `Tie! You both chose ${playerSelection}`;
-            info.appendChild(tie);
+            round.appendChild(tie);
 
         } else if (computerSelection === "Paper") {
             playerLose++;
             compWin++;
             lose.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-            info.appendChild(lose);
+            round.appendChild(lose);
 
         } else {
             playerWin++;
             compLose++;
             win.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-            info.appendChild(win);
+            round.appendChild(win);
         }
 
     } else if (playerSelection === "Paper") {
@@ -134,15 +137,15 @@ function playGame(player) {
             playerWin++;
             compLose++;
             win.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-            info.appendChild(win);
+            round.appendChild(win);
         } else if (computerSelection === "Paper") {
             tie.textContent = `Tie! You both chose ${playerSelection}`;
-            info.appendChild(tie);
+            round.appendChild(tie);
         } else {
             playerLose++;
             compWin++;
             lose.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-            info.appendChild(lose);
+            round.appendChild(lose);
         }
 
     } else {
@@ -151,15 +154,15 @@ function playGame(player) {
             playerLose++;
             compWin++;
             lose.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-            info.appendChild(lose);
+            round.appendChild(lose);
         } else if (computerSelection === "Paper") {
             playerWin++;
             compLose++;
             win.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-            info.appendChild(win);
+            round.appendChild(win);
         } else {
             tie.textContent = `Tie! You both chose ${playerSelection}`;
-            info.appendChild(tie);
+            round.appendChild(tie);
         }
 
     }
@@ -172,13 +175,23 @@ function playGame(player) {
     
 }
 
+function playGame() {
+
+
+    while (playerWin !== 5 || compWin !== 5) {
+
+        playRound();
+
+    }
+
+}
+
 /*
 Referenced
 https://stackoverflow.com/questions/49680484/how-to-add-one-event-listener-for-all-buttons
 */
 buttons.forEach(button => {
     button.addEventListener('click', e => {
-        playGame(button.name);
+        playRound(button.name);
     });
 });
-
